@@ -8,9 +8,9 @@ apt-get update
 
 mkdir -p /usr/lib/jvm
 
-scp frodo@192.168.8.130:/home/frodo/jdk-8u211-linux-x64.tar.gz .
+wget http://185.8.245.158/jdk-8u211-linux-x64.tar.gz
 
-#cp /java/jdk-8u211-linux-x64.tar.gz /usr/lib/jvm/
+cp jdk-8u211-linux-x64.tar.gz /usr/lib/jvm/
 
 tar xvzf /usr/lib/jvm/jdk-8u211-linux-x64.tar.gz
 
@@ -38,9 +38,9 @@ sleep 3
 
 apt-get install elasticsearch -y
 
-scp frodo@vivasgonzalez.ddns.net:/home/frodo/ELK/elastic/elasticsearch.yml /etc/elasticsearch/.
+#scp frodo@vivasgonzalez.ddns.net:/home/frodo/ELK/elastic/elasticsearch.yml /etc/elasticsearch/.
 
-#cp /elastic/elasticsearch.yml /etc/elasticsearch/.
+cp /elastic/elasticsearch.yml /etc/elasticsearch/.
 
 sleep 2
 
