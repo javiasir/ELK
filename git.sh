@@ -38,7 +38,7 @@ apt-get install elasticsearch -y
 
 #scp frodo@vivasgonzalez.ddns.net:/home/frodo/ELK/elastic/elasticsearch.yml /etc/elasticsearch/.
 
-cp /elastic/elasticsearch.yml /etc/elasticsearch/.
+cp elastic/elasticsearch.yml /etc/elasticsearch/.
 
 sleep 2
 
@@ -70,7 +70,7 @@ systemctl enable kibana && echo "Activando el servicio en el arranque"
 
 sleep 2
 
-systemclt start kibana && echo "Iniciando el servicio"
+systemctl start kibana && echo "Iniciando el servicio"
 
 sleep 1
 
@@ -86,7 +86,7 @@ htpasswd -c /etc/nginx/htpasswd.kibana kibanaadmin
 
 #scp frodo@vivasgonzalez.ddns.net:/home/frodo/ELK/nginx/default /etc/nginx/sites-enabled/default
 
-cp /nginx/default /etc/nginx/sites-enabled/default
+cp nginx/default /etc/nginx/sites-enabled/default
 
 nginx -t
 
@@ -114,6 +114,6 @@ echo "- Archivos para logs de Failtoban"
 
 echo "- Archivos para logs de Nginx/Apache"
 
-cp /logstash/* /etc/logstash/conf.d/.
+cp logstash/* /etc/logstash/conf.d/.
 
 
