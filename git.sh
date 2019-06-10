@@ -10,11 +10,9 @@ mkdir -p /usr/lib/jvm
 
 wget http://185.8.245.158/jdk-8u211-linux-x64.tar.gz
 
-cp jdk-8u211-linux-x64.tar.gz /usr/lib/jvm/
+tar xvzf jdk-8u211-linux-x64.tar.gz
 
-tar xvzf /usr/lib/jvm/jdk-8u211-linux-x64.tar.gz
-
-#cp -r jdk1.8.0_211 /usr/lib/jvm/
+cp -r jdk1.8.0_211 /usr/lib/jvm/
 
 update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_211/bin/java 4
 
