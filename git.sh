@@ -10,9 +10,11 @@ mkdir -p /usr/lib/jvm
 
 scp frodo@192.168.8.130:/home/frodo/jdk-8u211-linux-x64.tar.gz .
 
-tar xvzf jdk-8u211-linux-x64.tar.gz
+#cp /java/jdk-8u211-linux-x64.tar.gz /usr/lib/jvm/
 
-cp -r jdk1.8.0_211 /usr/lib/jvm/
+tar xvzf /usr/lib/jvm/jdk-8u211-linux-x64.tar.gz
+
+#cp -r jdk1.8.0_211 /usr/lib/jvm/
 
 update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_211/bin/java 4
 
@@ -38,41 +40,59 @@ apt-get install elasticsearch -y
 
 scp frodo@vivasgonzalez.ddns.net:/home/frodo/ELK/elastic/elasticsearch.yml /etc/elasticsearch/.
 
-#nano /etc/elasticsearch/elasticsearch.yml
+#cp /elastic/elasticsearch.yml /etc/elasticsearch/.
 
-systemctl start elasticsearch
+sleep 2
 
-systemctl enable elasticsearch
+systemctl start elasticsearch && echo "Iniciando el servicio de Elastic"
+
+sleep 2
+
+systemctl enable elasticsearch && echo "Configurando el servicio para que arranque con el sistema"
+
+sleep 2
+
+echo "Comprobacion de elastic"
+
+sleep 1
 
 curl localhost:9200
 
-sleep 5
+sleep 1
 
 ## Instalación Kibana
 
 echo "Instalacion Kibana"
 
-sleep 3
+sleep 2
 
 apt-get install kibana -y
 
-systemctl enable kibana
+systemctl enable kibana && echo "Activando el servicio en el arranque"
 
-systemclt start kibana
+sleep 2
+
+systemclt start kibana && echo "Iniciando el servicio"
+
+sleep 1
 
 ## Instalación nginx
 
 echo "Instalacion Nginx"
 
-sleep 3
+sleep 2
 
 apt-get install nginx apache2-utils -y
 
 htpasswd -c /etc/nginx/htpasswd.kibana kibanaadmin
 
-scp frodo@vivasgonzalez.ddns.net:/home/frodo/ELK/nginx/default /etc/nginx/sites-enabled/default
+#scp frodo@vivasgonzalez.ddns.net:/home/frodo/ELK/nginx/default /etc/nginx/sites-enabled/default
+
+cp /nginx/default /etc/nginx/sites-enabled/default
 
 nginx -t
+
+echo "Comprobacion de la sintaxis de Nginx"
 
 sleep 2
 
@@ -82,8 +102,20 @@ systemctl restart nginx
 
 ## Instalacion Logstash
 
+echo "Instalacion de Logstash"
+
 apt-get install logstash -y
 
-scp frodo@vivasgonzalez.ddns.net:/home/frodo/ELK/logstash/* /etc/logstash/conf.d/.
+#scp frodo@vivasgonzalez.ddns.net:/home/frodo/ELK/logstash/* /etc/logstash/conf.d/.
+
+sleep 2
+
+echo "Copiando archivos de configuracion de ejemplo para monitorizar logs"
+
+echo "- Archivos para logs de Failtoban"
+
+echo "- Archivos para logs de Nginx/Apache"
+
+cp /logstash/* /etc/logstash/conf.d/.
 
 
