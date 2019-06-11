@@ -115,5 +115,3 @@ echo "- Archivos para logs de Failtoban"
 echo "- Archivos para logs de Nginx/Apache"
 
 cp logstash/* /etc/logstash/conf.d/.
-
-
